@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/today"
+        android:icon="@drawable/ic_nature_black_24dp"
+        android:title="Today"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction,HardcodedText" />
+
+    <item
+        android:id="@+id/thisweek"
+        android:icon="@drawable/ic_my_location_black_24dp"
+        android:title="this week"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always"
+        tools:ignore="HardcodedText" />
+
+
+    <item
+        android:id="@+id/feedback"
+        android:icon="@drawable/ic_record_voice_over_black_24dp"
+        android:title="feedback"
+        app:showAsAction="always"
+        tools:ignore="HardcodedText" />
+    <item
+        android:id="@+id/profil"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="profil"
+        app:showAsAction="always"
+        tools:ignore="HardcodedText" />
+
+</menu>
