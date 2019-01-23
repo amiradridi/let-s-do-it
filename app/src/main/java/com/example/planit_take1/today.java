@@ -7,6 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -14,10 +16,19 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+
 import java.text.DateFormat;
 import java.util.Calendar;
 
 public class today extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference notebookRef = db.collection("Notebook");
+
+    private NoteAdapter adapter;
 
     private BottomNavigationView.OnNavigationItemSelectedListener navlistener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -54,6 +65,34 @@ public class today extends AppCompatActivity implements DatePickerDialog.OnDateS
         bottomNav.setOnNavigationItemSelectedListener(navlistener);
 
 
+        setUpRecyclerView();
+    }
+
+    private void setUpRecyclerView() {
+        Query query = notebookRef.orderBy("priority", Query.Direction.DESCENDING);
+
+        FirestoreRecyclerOptions<Note> options = new FirestoreRecyclerOptions.Builder<Note>()
+                .setQuery(query, Note.class)
+                .build();
+
+        adapter = new NoteAdapter(options);
+
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
     }
 
     //menu
@@ -91,8 +130,8 @@ public class today extends AppCompatActivity implements DatePickerDialog.OnDateS
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         String currentDatestring = DateFormat.getDateInstance().format(c.getTime());
-        TextView textView = (TextView) findViewById(R.id.texto);
-        textView.setText(currentDatestring);
+       /* TextView textView = (TextView) findViewById(R.id.texto);
+        textView.setText(currentDatestring);*/
 
     }
 
