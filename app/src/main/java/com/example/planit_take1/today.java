@@ -1,6 +1,7 @@
 package com.example.planit_take1;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
@@ -27,7 +29,7 @@ import java.util.Calendar;
 public class today extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference notebookRef = db.collection("Notebook");
-
+   // private Context context ;
     private NoteAdapter adapter;
 
     private BottomNavigationView.OnNavigationItemSelectedListener navlistener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -66,8 +68,20 @@ public class today extends AppCompatActivity implements DatePickerDialog.OnDateS
 
 
         setUpRecyclerView();
-    }
+        adapter.setOnItemClickListener(new NoteAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                Note note = documentSnapshot.toObject(Note.class);
+                String id = documentSnapshot.getId();
+                Intent intent = new Intent(today.this, event.class);
+                startActivity(intent);
+               String path = documentSnapshot.getReference().getPath();
+                Toast.makeText(today.this,
+                        "Position: " + position + " ID: " + id, Toast.LENGTH_SHORT).show();
+            }
+        });
 
+    }
     private void setUpRecyclerView() {
         Query query = notebookRef.orderBy("priority", Query.Direction.DESCENDING);
 
@@ -134,6 +148,8 @@ public class today extends AppCompatActivity implements DatePickerDialog.OnDateS
         textView.setText(currentDatestring);*/
 
     }
+
+
 
 
 }

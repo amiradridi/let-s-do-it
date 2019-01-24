@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "506330962135",
-    "firebase_url": "https://let-s-do-it-554e0.firebaseio.com",
-    "project_id": "let-s-do-it-554e0",
-    "storage_bucket": "let-s-do-it-554e0.appspot.com"
+    "project_number": "186300461868",
+    "firebase_url": "https://okey-d0d7a.firebaseio.com",
+    "project_id": "okey-d0d7a",
+    "storage_bucket": "okey-d0d7a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:506330962135:android:653124be92d99d8e",
+        "mobilesdk_app_id": "1:186300461868:android:653124be92d99d8e",
         "android_client_info": {
           "package_name": "com.example.planit_take1"
         }
       },
       "oauth_client": [
         {
-          "client_id": "506330962135-ovbaihfjmuok59tnpaqcmdjhf8um8iim.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.planit_take1",
-            "certificate_hash": "a008bf3d414709c7d0ea45c89e9ec4468b732bcc"
-          }
-        },
-        {
-          "client_id": "506330962135-3qiirbbat01rqbb071fbonrq19str5gp.apps.googleusercontent.com",
+          "client_id": "186300461868-v9mpmplqd4rap04bbpr8vo01e4uqpotn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCXsp-tc1UJj5nNhALY8iHuSQBZ6vjJzZ4"
+          "current_key": "AIzaSyBYnBAoZGxQV-MSirqPA1LdlYoGb-dMmEk"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "506330962135-3qiirbbat01rqbb071fbonrq19str5gp.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

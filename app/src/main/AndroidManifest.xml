@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".today"></activity>
+        <activity android:name=".event"></activity>
+        <activity android:name=".today" />
         <activity android:name=".thisweek" />
         <activity android:name=".profil" />
         <activity android:name=".feedback" />
